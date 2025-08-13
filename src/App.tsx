@@ -10,7 +10,7 @@ function App() {
   const meetingNumber = "9083285683";
   const passWord = "280443";
   const role = 1;
-  const userName = "React";
+  const userName = "Bstef Zoom";
   const userEmail = "";
   const registrantToken = "";
   const zakToken = "";
@@ -70,7 +70,7 @@ function App() {
   return (
     <div className="App">
       <main>
-        <h1>Zoom Meeting on AWS Amplify</h1>
+        <h1>Zoom Meeting SDK Sample React</h1>
         <button onClick={getSignature}>Join Meeting</button>
       </main>
     </div>
