@@ -10,10 +10,6 @@ function App() {
   const meetingNumber = "9083285683";
   const passWord = "280443";
   const role = 1;
-  const authEndpoint = ""; // http://localhost:4000
-  const meetingNumber = "";
-  const passWord = "";
-  const role = 0;
   const userName = "React";
   const userEmail = "";
   const registrantToken = "";
