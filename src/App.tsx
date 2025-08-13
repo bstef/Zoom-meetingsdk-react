@@ -31,11 +31,12 @@ function App() {
         body: JSON.stringify({
           meetingNumber: meetingNumber,
           role: role,
+          videoWebRtcMode: 1,
         }),
       });
-      const res = await req.json()
+      const res = await req.json();
       const signature = res.signature as string;
-      startMeeting(signature)
+      startMeeting(signature);
     } catch (e) {
       console.log(e);
     }
@@ -53,7 +54,6 @@ function App() {
         // can this be async?
         ZoomMtg.join({
           signature: signature,
-          sdkKey: sdkKey,
           meetingNumber: meetingNumber,
           passWord: passWord,
           userName: userName,
