@@ -5,7 +5,7 @@ function App() {
   const client = ZoomMtgEmbedded.createClient();
 
   const authEndpoint = "https://zoom-meeting-sdk-auth-sample-rn55.onrender.com"; // http://localhost:4000
-  //const sdkKey = "31mTq8crR1awQ1k37phHoQ";
+  const sdkKey = "31mTq8crR1awQ1k37phHoQ";
   const meetingNumber = "9083285683";
   const passWord = "280443";
   const role = 1;
@@ -13,7 +13,7 @@ function App() {
   const userEmail = "";
   const registrantToken = "";
   const zakToken = "";
-  //const leaveUrl = "https://bstef.github.io/thanks.html";
+  const leaveUrl = "https://bstef.github.io/thanks.html";
 
   const getSignature = async () => {
     try {
