@@ -5,15 +5,15 @@ ZoomMtg.preLoadWasm();
 ZoomMtg.prepareWebSDK();
 
 function App() {
-  const authEndpoint = ""; // http://localhost:4000
-  const meetingNumber = "";
-  const passWord = "";
-  const role = 0;
-  const userName = "React";
+  const authEndpoint = "https://zoom-meeting-sdk-auth-sample-rn55.onrender.com"; // http://localhost:4000
+  const meetingNumber = "9083285683";
+  const passWord = "280443";
+  const role = 1;
+  const userName = "Zoom AWS React";
   const userEmail = "";
   const registrantToken = "";
   const zakToken = "";
-  const leaveUrl = "http://localhost:5173";
+  const leaveUrl = "https://bstef.github.io/thanks.html";
 
   const getSignature = async () => {
     try {
