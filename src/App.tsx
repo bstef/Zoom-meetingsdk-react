@@ -67,12 +67,11 @@ function App() {
     <div className="App">
       {!isMeetingStarted && (
         <div className="landing-page">
-          <div className="header-box">
-            <div className="zoom-icon">📹</div>
-            <h1>Zoom Meeting on AWS</h1>
-          </div>
-
           <div className="hero-section">
+            <div className="logo-container">
+              <div className="zoom-icon">📹</div>
+              <h1 className="brand-title">Zoom Meeting on AWS</h1>
+            </div>
             <p className="hero-subtitle">
               Connect instantly with HD video and crystal-clear audio. Your secure meeting is ready.
             </p>
