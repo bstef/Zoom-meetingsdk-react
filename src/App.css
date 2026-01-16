@@ -258,9 +258,38 @@ body {
   z-index: -1;
 }
 
+/* Meeting SDK Container */
+#meetingSDKElement {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  z-index: -1;
+}
+
 #meetingSDKElement.meeting-active {
   display: block;
   z-index: 10000;
+}
+
+/* Force Zoom SDK children to be fullscreen */
+#meetingSDKElement.meeting-active > div,
+#meetingSDKElement.meeting-active > div > div {
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+
+#meetingSDKElement.meeting-active iframe {
+  width: 100% !important;
+  height: 100% !important;
 }
 
 /* Responsive Design */
