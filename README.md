@@ -63,7 +63,7 @@ To get started, clone the repo:
 
 ## Usage
 
-1. Navigate to http://localhost:5173 and click "Join Meeting".
+1. Navigate to https://master.d7h4ptvfgy6a2.amplifyapp.com/ and click "Join Meeting".
 
    ### Client View
 
