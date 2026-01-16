@@ -76,7 +76,6 @@ return (
           <span>Zoom Meeting</span>
         </div>
       </div>
-      <h1>Join Your Virtual Meeting</h1>
       <p>Connect with your team from anywhere. High-quality video, crystal clear audio, and seamless screen sharing.</p>
     </div>
 
