@@ -36,32 +36,54 @@ function App() {
     }
   };
 
-  async function startMeeting(signature: string) {
-    const meetingSDKElement = document.getElementById("meetingSDKElement")!;
-    setIsMeetingStarted(true);
+async function startMeeting(signature: string) {
+  const meetingSDKElement = document.getElementById("meetingSDKElement")!;
+  setIsMeetingStarted(true);
+  
+  try {
+    await client.init({
+      zoomAppRoot: meetingSDKElement,
+      language: "en-US",
+      patchJsMedia: true,
+      leaveOnPageUnload: true,
+    });
+    await client.join({
+      signature: signature,
+      meetingNumber: meetingNumber,
+      password: passWord,
+      userName: userName,
+      userEmail: userEmail,
+      tk: registrantToken,
+      zak: zakToken,
+    });
+    console.log("joined successfully");
     
-    try {
-      await client.init({
-        zoomAppRoot: meetingSDKElement,
-        language: "en-US",
-        patchJsMedia: true,
-        leaveOnPageUnload: true,
-      });
-      await client.join({
-        signature: signature,
-        meetingNumber: meetingNumber,
-        password: passWord,
-        userName: userName,
-        userEmail: userEmail,
-        tk: registrantToken,
-        zak: zakToken,
-      });
-      console.log("joined successfully");
-    } catch (error) {
-      console.log(error);
-      setIsMeetingStarted(false);
-    }
+    // Force fullscreen resize
+    const forceResize = () => {
+      const container = document.getElementById("meetingSDKElement");
+      if (container) {
+        const allDivs = container.querySelectorAll("div");
+        allDivs.forEach((div: Element) => {
+          const htmlDiv = div as HTMLElement;
+          htmlDiv.style.width = "100vw";
+          htmlDiv.style.height = "100vh";
+          htmlDiv.style.maxWidth = "100vw";
+          htmlDiv.style.maxHeight = "100vh";
+        });
+      }
+    };
+    
+    // Run resize multiple times to override SDK
+    setTimeout(forceResize, 100);
+    setTimeout(forceResize, 500);
+    setTimeout(forceResize, 1000);
+    setInterval(forceResize, 2000);
+    
+  } catch (error) {
+    console.log(error);
+    setIsMeetingStarted(false);
   }
+}
 
   return (
     <div className="App">
