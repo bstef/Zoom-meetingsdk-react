@@ -14,7 +14,7 @@ function App() {
   const userEmail = "";
   const registrantToken = "";
   const zakToken = "";
-  const leaveUrl = "https://bstef.github.io/thanks.html";
+  const leaveUrl = import.meta.env.VITE_LEAVE_URL || "https://bstef.github.io/thanks.html";
 
   const getSignature = async () => {
     try {
