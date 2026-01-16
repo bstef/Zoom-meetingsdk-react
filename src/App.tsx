@@ -1,16 +1,18 @@
 import "./App.css";
-import ZoomMtgEmbedded from "@zoom/meetingsdk/embedded";
+import { ZoomMtg } from "@zoom/meetingsdk";
 import { useState } from "react";
 
+ZoomMtg.preLoadWasm();
+ZoomMtg.prepareWebSDK();
+
 function App() {
-  const client = ZoomMtgEmbedded.createClient();
   const [isMeetingStarted, setIsMeetingStarted] = useState(false);
 
   const authEndpoint = import.meta.env.VITE_AUTH_ENDPOINT || "https://zoom-meeting-sdk-auth-sample-rn55.onrender.com";
   const sdkKey = import.meta.env.VITE_SDK_KEY || "E52XdEmTmOcssZXj9lIpg";
   const meetingNumber = import.meta.env.VITE_MEETING_NUMBER || "9083285683";
   const passWord = import.meta.env.VITE_PASSWORD || "280443";
-  const role = 1;
+  const role = 0;
   const userName = import.meta.env.VITE_USER_NAME || "Zoom Web React";
   const userEmail = "";
   const registrantToken = "";
@@ -36,31 +38,36 @@ function App() {
     }
   };
 
-  async function startMeeting(signature: string) {
-    const meetingSDKElement = document.getElementById("meetingSDKElement")!;
+  function startMeeting(signature: string) {
     setIsMeetingStarted(true);
-    
-    try {
-      await client.init({
-        zoomAppRoot: meetingSDKElement,
-        language: "en-US",
-        patchJsMedia: true,
-        leaveOnPageUnload: true,
-      });
-      await client.join({
-        signature: signature,
-        meetingNumber: meetingNumber,
-        password: passWord,
-        userName: userName,
-        userEmail: userEmail,
-        tk: registrantToken,
-        zak: zakToken,
-      });
-      console.log("joined successfully");
-    } catch (error) {
-      console.log(error);
-      setIsMeetingStarted(false);
-    }
+    document.getElementById("zmmtg-root")!.style.display = "block";
+
+    ZoomMtg.init({
+      leaveUrl: leaveUrl,
+      patchJsMedia: true,
+      leaveOnPageUnload: true,
+      success: () => {
+        ZoomMtg.join({
+          signature: signature,
+          meetingNumber: meetingNumber,
+          userName: userName,
+          sdkKey: sdkKey,
+          userEmail: userEmail,
+          passWord: passWord,
+          tk: registrantToken,
+          zak: zakToken,
+          success: () => {
+            console.log("joined successfully");
+          },
+          error: (error: any) => {
+            console.log(error);
+          },
+        });
+      },
+      error: (error: any) => {
+        console.log(error);
+      },
+    });
   }
 
   return (
@@ -137,8 +144,6 @@ function App() {
           </div>
         </div>
       )}
-
-      <div id="meetingSDKElement" className={isMeetingStarted ? "meeting-active" : ""}></div>
     </div>
   );
 }
