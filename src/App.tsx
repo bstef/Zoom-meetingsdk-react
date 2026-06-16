@@ -77,7 +77,7 @@ function App() {
           <div className="hero-section">
             <div className="logo-container">
               <div className="zoom-icon">📹</div>
-              <h1 className="brand-title">Zoom Meeting on AWS</h1>
+              <h1 className="brand-title">Zoom Meetings</h1>
             </div>
             <p className="hero-subtitle">
               Connect instantly with HD video and crystal-clear audio. Your secure meeting is ready.
